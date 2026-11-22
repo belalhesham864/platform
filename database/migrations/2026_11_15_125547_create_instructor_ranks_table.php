@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('required_hours')->default(0);
             $table->integer('required_student')->default(0);
             $table->string('benefits')->nullable();
-           $table->unsignedInteger('order')->default(1);
+            $table->unsignedInteger('order')->default(1);
             $table->timestamps();
         });
     }

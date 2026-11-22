@@ -14,7 +14,6 @@ class InstructorFactory extends Factory
 {
     protected $model = instructors::class;
 
-
     /**
      * Define the model's default state.
      *
@@ -29,7 +28,7 @@ class InstructorFactory extends Factory
             'slug' => Str::slug($name.'-'.fake()->unique()->randomNumber(5)),
             'email' => fake()->unique()->safeEmail(),
             'Bio' => fake()->paragraph(),
-            'password' =>  Hash::make('password'),
+            'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber(),
             'portfolio_picture' => null,
             'small_description' => fake()->sentence(),

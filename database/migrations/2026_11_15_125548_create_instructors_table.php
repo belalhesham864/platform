@@ -24,26 +24,25 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->date('birthday')->nullable();
 
-           $table->json('education')->nullable();
-           $table->json('certifications')->nullable();
-           $table->json('skills')->nullable();
-           $table->json('experience')->nullable();
-           $table->json('specializations')->nullable();
-           $table->json('achievements')->nullable();
+            $table->json('education')->nullable();
+            $table->json('certifications')->nullable();
+            $table->json('skills')->nullable();
+            $table->json('experience')->nullable();
+            $table->json('specializations')->nullable();
+            $table->json('achievements')->nullable();
 
-           $table->integer('years_of_experience')->nullable();
-           $table->string('linkedin_url')->nullable();
-              $table->string('facebook_url')->nullable();
-              $table->string('twitter_url')->nullable();
-           $table->string('instagram_url')->nullable();
-           $table->string('youtube_url')->nullable();
-           $table->boolean('is_active')->default(true);
-           $table->timestamp('email_verified_at')->nullable();
+            $table->integer('years_of_experience')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->string('instagram_url')->nullable();
+            $table->string('youtube_url')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamp('email_verified_at')->nullable();
 
-           $table->foreignId('rank_id')->nullable()->constrained('instructor_ranks')->restrictOnDelete();
-           $table->index('is_active');
-           $table->index(['rank_id', 'is_active']);
-
+            $table->foreignId('rank_id')->nullable()->constrained('instructor_ranks')->restrictOnDelete();
+            $table->index('is_active');
+            $table->index(['rank_id', 'is_active']);
 
             $table->timestamps();
         });

@@ -20,13 +20,13 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 10, 2);
             $table->decimal('price_after_discount', 10, 2)->nullable();
-            $table->enum('language', ['ar', 'en','fr'])->default('ar');
+            $table->enum('language', ['ar', 'en', 'fr'])->default('ar');
             $table->float('duration')->nullable();
             $table->string('thumbnail')->nullable();
             $table->enum('level', ['beginner', 'intermediate', 'advanced'])->default('beginner');
             $table->integer('number_of_students')->default(0);
             $table->integer('number_of_lectures')->default(0);
-            
+
             $table->boolean('is_published')->default(false);
 
             $table->timestamps();

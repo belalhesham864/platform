@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->string('currency')->default('USD');
             $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
-            $table->enum('payment_method', ['credit_card','wallet', 'paypal', 'bank_transfer'])->default('credit_card');
+            $table->enum('payment_method', ['credit_card', 'wallet', 'paypal', 'bank_transfer'])->default('credit_card');
             $table->timestamps();
         });
     }

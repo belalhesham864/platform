@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Student\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -7,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 | API Routes
 |--------------------------------------------------------------------------
 */
+
+// Dedicated Public Settings endpoint (unauthenticated / guest)
+Route::get('settings/public', [SettingsController::class, 'publicSettings']);
+Route::get('v1/settings/public', [SettingsController::class, 'publicSettings']);
 
 Route::prefix('admin')->group(base_path('routes/admin.php'));
 Route::prefix('instructor')->group(base_path('routes/instructor.php'));

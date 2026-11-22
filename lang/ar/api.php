@@ -23,4 +23,12 @@ return [
     'not_found' => 'المصدر المطلوب غير موجود',
     'too_many_requests' => 'تم تجاوز عدد المحاولات المسموح بها، يرجى المحاولة لاحقاً',
     'server_error' => 'حدث خطأ أثناء معالجة الطلب',
+
+    // Settings Module
+    'settings_retrieved' => 'تم استرجاع الإعدادات بنجاح',
+    'setting_retrieved' => 'تم استرجاع الإعداد بنجاح',
+    'setting_created' => 'تم إنشاء الإعداد بنجاح',
+    'setting_updated' => 'تم تحديث الإعداد بنجاح',
+    'setting_deleted' => 'تم حذف الإعداد بنجاح',
+    'setting_not_found' => 'الإعداد المطلوب غير موجود',
 ];

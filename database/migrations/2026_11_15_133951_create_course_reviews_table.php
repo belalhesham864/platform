@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unique(['course_id', 'user_id']);
             $table->index('course_id');
-            $table->index(['user_id','is_approved','rating']);
+            $table->index(['user_id', 'is_approved', 'rating']);
         });
     }
 
