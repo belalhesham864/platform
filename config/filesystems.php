@@ -47,6 +47,22 @@ return [
             'report' => false,
         ],
 
+        'courses' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/courses'),
+            'url' => env('APP_URL').'uploads/cources',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'categories' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/categories'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/uploads/categories',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

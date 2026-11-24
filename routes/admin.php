@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\AuthController;
+use App\Http\Controllers\Api\Admin\CategoryController;
 use App\Http\Controllers\Api\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,7 @@ Route::middleware(['auth:sanctum', 'user.type:admin'])->group(function () {
     // Settings
     Route::get('settings/public', [SettingsController::class, 'publicSettings']);
     Route::apiResource('settings', SettingsController::class);
+
+    // Categories
+    Route::apiResource('categories', CategoryController::class);
 });

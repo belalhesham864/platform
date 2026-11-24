@@ -45,8 +45,9 @@ app/
 ├── Services/                  # Business Logic Services (AdminAuthService, InstructorAuthService, StudentAuthService)
 ├── Support/
 │   └── ApiResponse.php        # Static API response helper (for exception handling)
-└── Traits/
-    └── ApiResponse.php        # Controller API response trait (single unified apiResponse function)
+├── Traits/
+│   └── ApiResponse.php        # Controller API response trait (single unified apiResponse function)
+└── utils/                     # Utility classes (ImageManger for image upload & deletion)
 bootstrap/
 └── app.php                    # Routing, middleware aliases, and unified JSON exception rendering
 database/
@@ -351,7 +352,33 @@ Laravel Cache is allowed and encouraged to improve application performance and r
 
 ---
 
-## 14. Mandatory Checklist for Future Agents
+## 14. Image & File Upload Standards (`App\utils\ImageManger`)
+
+Whenever dealing with image uploads, replacements, or deletions across any domain (Admin, Instructor, Student, Courses, etc.), you MUST use the centralized `App\utils\ImageManger` utility class.
+
+### Required Rules
+
+1. **Mandatory Utility:** Always use `App\utils\ImageManger` (`new ImageManger()` or dependency injection). Do not implement raw `$request->file('...')->store(...)` or custom upload logic inside controllers or services.
+2. **Filesystem Disks:** Store images using the disks configured in `config/filesystems.php`:
+   - Courses: `'courses'` disk (`public_path('uploads/courses')`).
+   - General public assets: `'public'` disk.
+3. **Single Image Upload:**
+   - Use `uploadSingeImage($path, $image, $disk)`: generates a unique filename (`Str::uuid() . time() . '.' . $extension`) and stores the file on the specified disk.
+   - Example:
+     ```php
+     $imageManger = new ImageManger();
+     $fileName = $imageManger->uploadSingeImage('/', $request->file('image'), 'courses');
+     ```
+4. **Multiple Images:**
+   - Use `uploadImages($images, $model, $disk)` for models that have a `hasMany` images relationship.
+5. **Image Deletion & Cleanup:**
+   - When updating or deleting an entity with an image, ensure the old image is deleted using `deleteImageFromLocal($oldImagePath)`.
+6. **Database Persistence:**
+   - Store the generated file name or relative path in the database as required by the schema.
+
+---
+
+## 15. Mandatory Checklist for Future Agents
 
 Before marking any task as complete, verify:
 - [ ] No `migrate:fresh` or destructive commands were used.
@@ -361,5 +388,10 @@ Before marking any task as complete, verify:
 - [ ] All responses and validation messages adhere to the project's language specifications (`lang/ar/`).
 - [ ] Form requests inherit from appropriate base classes and statically define their tables.
 - [ ] Caching rules are strictly respected: Cache facade used, explicit TTL configured, cache keys structured, and cache invalidated upon create/update/delete.
+- [ ] Any image handling strictly uses `App\utils\ImageManger` and configured filesystem disks.
 - [ ] All automated tests pass (`php artisan test`).
 - [ ] Code is formatted with Laravel Pint (`./vendor/bin/pint --test app tests`).
+- [ ] Every new endpoint has a Pest feature test and is added to the Postman collection (Section 16).
+
+
+---

@@ -31,4 +31,13 @@ return [
     'setting_updated' => 'تم تحديث الإعداد بنجاح',
     'setting_deleted' => 'تم حذف الإعداد بنجاح',
     'setting_not_found' => 'الإعداد المطلوب غير موجود',
+
+    // Categories Module
+    'categories_retrieved' => 'تم استرجاع الأقسام بنجاح',
+    'category_retrieved' => 'تم استرجاع بيانات القسم بنجاح',
+    'category_created' => 'تم إنشاء القسم بنجاح',
+    'category_updated' => 'تم تحديث بيانات القسم بنجاح',
+    'category_deleted' => 'تم حذف القسم بنجاح',
+    'category_not_found' => 'القسم المطلوب غير موجود',
+    'category_has_courses' => 'لا يمكن حذف هذا القسم لأنه يحتوي على كورسات مرتبطة به',
 ];
